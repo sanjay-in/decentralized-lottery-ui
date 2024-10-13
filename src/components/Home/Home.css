@@ -1,0 +1,38 @@
+.home-header {
+  background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  translate: calc(-50%);
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+
+.home-header > span {
+  background: linear-gradient(to top, #dba50379 0%, #ffcf40bf 52%, #ffbf00a6 100%);
+  background-clip: text;
+  color: transparent;
+  margin-right: 0.5rem;
+  font-style: italic;
+}
+
+.confetti-background-1,
+.confetti-background-2 {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  opacity: 10%;
+  z-index: 10;
+}
+
+.confetti-background-1 {
+  left: 0%;
+}
+
+.confetti-background-2 {
+  right: 0%;
+}
