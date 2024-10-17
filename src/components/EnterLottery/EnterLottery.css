@@ -8,6 +8,8 @@
   box-shadow: 0 0 10px rgba(255, 217, 0, 0.731);
   position: relative;
   z-index: 100;
+  width: 45.7vw;
+  height: 65vh;
 }
 
 .lottery-text {
@@ -23,7 +25,6 @@
   margin: auto;
   background-color: rgba(43, 43, 43, 0.64);
   border-radius: 10px;
-  width: inherit;
 }
 
 .lottery-amount-symbol {
@@ -247,4 +248,11 @@ input::-webkit-inner-spin-button {
   max-width: 1.2rem;
   color: rgba(0, 0, 0, 0.845);
   text-shadow: -1px 1px 1px white;
+}
+
+.lottery-loading-page {
+  position: relative;
+  top: 45%;
+  left: 50%;
+  translate: calc(-50%);
 }
