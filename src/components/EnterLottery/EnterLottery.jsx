@@ -8,18 +8,21 @@ import "./EnterLottery.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const EnterLottery = () => {
-  let lotteryContract;
+  const [lotteryContract, setLotteryContract] = useState();
   const [ethAmount, setEthAmount] = useState();
   const [recentWinner, setRecentWinner] = useState("");
   const [copyClipboard, setCopyClipboard] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const setLotteryContract = async () => {
+  const setLotteryContractHandler = async () => {
     if (window.ethereum) {
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
-        lotteryContract = new Contract(contractAddress, ABI, signer);
+        const lottery = new Contract(contractAddress, ABI, signer);
+        setLotteryContract(lottery);
+        const recentWinner = await lottery.getWinnersList();
+        setRecentWinner(recentWinner);
       } catch (error) {
         console.log(error);
         toastMessage("error", "Can't connect to smart contract");
@@ -32,7 +35,7 @@ const EnterLottery = () => {
   const updateRecentWinner = async () => {
     try {
       if (!lotteryContract) {
-        await setLotteryContract();
+        await setLotteryContractHandler();
       }
       const recentWinner = await lotteryContract.getWinnersList();
       setRecentWinner(recentWinner);
@@ -47,7 +50,7 @@ const EnterLottery = () => {
     setLoading(true);
     try {
       if (!lotteryContract) {
-        await setLotteryContract();
+        await setLotteryContractHandler();
       }
       const tx = await lotteryContract.enterLottery({ value: ethers.parseEther(ethAmount.toString()) });
       await tx.wait();
@@ -105,7 +108,7 @@ const EnterLottery = () => {
       updateRecentWinner();
     });
 
-    setLotteryContract();
+    setLotteryContractHandler();
   }, []);
   return (
     <div className="lottery">
