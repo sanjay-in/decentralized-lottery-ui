@@ -122,7 +122,7 @@ const EnterLottery = () => {
         <Spinner variant="warning" className="lottery-loading-page" animation="border" />
       ) : (
         <>
-          <p className="lottery-text">Enter the amount you need to give for lottery</p>
+          <p className="lottery-text">Please enter the amount for lottery</p>
           <div className="lottery-amount">
             <div className="lottery-amount-symbol" aria-hidden="true">
               ETH
@@ -139,7 +139,7 @@ const EnterLottery = () => {
           </div>
           <div className="lottery-amount-info">
             <i className="fa fa-info-circle" aria-hidden="true"></i>
-            <div className="lottery-amount-info-text">Minimum amount to enter raffle is 0.001 ETH</div>
+            <div className="lottery-amount-info-text">Minimum amount to enter lottery is 0.001 ETH</div>
           </div>
           <div>
             <div className="lottery-recent-winner">
