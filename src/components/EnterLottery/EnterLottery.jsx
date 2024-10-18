@@ -36,6 +36,7 @@ const EnterLottery = () => {
   };
 
   const updateRecentWinner = async () => {
+    setScreenLoading(true);
     try {
       if (!lotteryContract) {
         await setLotteryContractHandler();
@@ -46,6 +47,7 @@ const EnterLottery = () => {
       console.log(error);
       toastMessage("error", "Failed to update recent winner");
     }
+    setScreenLoading(false);
   };
 
   const enterLottery = async () => {
