@@ -112,9 +112,10 @@ const EnterLottery = () => {
     lotteryContract?.once("WinnerSelected", () => {
       updateRecentWinner();
     });
-
-    setLotteryContractHandler();
-  }, []);
+    if (!lotteryContract) {
+      setLotteryContractHandler();
+    }
+  }, [lotteryContract]);
   return (
     <div className="lottery">
       {screenLoading ? (
